@@ -1,4 +1,4 @@
-package ru.job4j.oop;
+package ru.job4j.oop; //hmm
 
 public class Cat {
     public static void main(String[] args) {
