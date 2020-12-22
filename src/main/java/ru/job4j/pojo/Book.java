@@ -4,6 +4,11 @@ public class Book {
     private String name = "empty place";
     private int pages = 0;
 
+    public Book(int pages, String name) {
+        this.name = name;
+        this.pages = pages;
+    }
+
     public String getName() {
         return name;
     }

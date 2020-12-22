@@ -2,19 +2,11 @@ package ru.job4j.pojo;
 
 public class Library {
     public static void main(String[] args) {
-        Book first = new Book();
-        Book second = new Book();
-        Book third = new Book();
-        Book fourth = new Book();
+        Book first = new Book(200, "One");
+        Book second = new Book(300, "Bambook");
+        Book third = new Book(323, "Clean code");
+        Book fourth = new Book(999, "Da Fish");
         Book[] books = new Book[4];
-        first.setName("One");
-        first.setPages(213);
-        second.setName("marlin code");
-        second.setPages(215);
-        third.setName("Clean code");
-        third.setPages(556);
-        fourth.setName("Four");
-        fourth.setPages(214);
         books[0] = first;
         books[1] = second;
         books[2] = third;
@@ -35,7 +27,7 @@ public class Library {
         System.out.println("Печать фильтрованного массива: ");
         for (int i = 0; i<books.length; i++) {
             Book book = books[i];
-            if (book.getName() == "Clean code") {
+            if (book.getName().equals("Clean code")) {
                 System.out.println(book.getName());
             }
         }
