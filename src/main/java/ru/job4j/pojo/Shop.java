@@ -1,7 +1,5 @@
 package ru.job4j.pojo;
 
-import ru.job4j.inheritance.Profession;
-
 import java.util.Objects;
 
 public class Shop {
