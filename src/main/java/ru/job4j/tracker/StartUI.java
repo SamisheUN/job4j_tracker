@@ -11,5 +11,12 @@ public class StartUI extends Item {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String formattedTime = itemTime.format(formatter);
         System.out.println(formattedTime);
+        Tracker tracker = new Tracker();
+        tracker.add(item);
+        Item founded = tracker.findById(1);
+        System.out.println("native: " + founded);
+        System.out.println("id:" + founded.getId());
+        System.out.println("name: " + founded.getName());
+        System.out.println("date: " + founded.getCreated());
     }
 }
