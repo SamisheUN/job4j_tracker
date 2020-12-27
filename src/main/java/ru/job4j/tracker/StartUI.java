@@ -14,9 +14,12 @@ public class StartUI extends Item {
         Tracker tracker = new Tracker();
         tracker.add(item);
         Item founded = tracker.findById(1);
+        System.out.println("Старый формат: ");
         System.out.println("native: " + founded);
         System.out.println("id:" + founded.getId());
         System.out.println("name: " + founded.getName());
         System.out.println("date: " + founded.getCreated());
+        System.out.println("Формат toString: ");
+        System.out.println(item.toString());
     }
 }
