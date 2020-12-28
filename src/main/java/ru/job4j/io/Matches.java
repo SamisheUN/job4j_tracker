@@ -8,7 +8,7 @@ public class Matches {
         Scanner input = new Scanner(System.in);
         int pool = 11;
         boolean first = false;
-        int player = new Random().nextInt(1); //жребий первого хода 1/0
+        int player = new Random().nextInt(2); //жребий первого хода 1/0
         while (pool > 0) {
             System.out.println("На столе " + pool + " спичек.");
             System.out.println("Число от игрока " + player + ": ");
