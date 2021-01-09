@@ -24,7 +24,7 @@ public class StartUI extends Item {
     public static void editItem(Input input, Tracker tracker) {
         System.out.println("=== Edit item ====");
         int replaceExistId = input.askInt("Enter an existing id: ");
-        String replaceNewName = String.valueOf(input.askInt("Enter new name: "));
+        String replaceNewName = input.askStr("Enter new name: ");
         Item replaceNewItem = new Item(replaceNewName);
         boolean replaceResult = tracker.replace(replaceExistId, replaceNewItem);
         if (replaceResult) {
