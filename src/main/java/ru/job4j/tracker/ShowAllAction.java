@@ -17,7 +17,7 @@ public class ShowAllAction implements UserAction {
         Item[] all = tracker.findAll();
         if (all.length > 0) {
             for (int index = 0; index < all.length; index++) {
-                System.out.println(all[index].toString());
+                out.printLn(all[index].toString());
             }
         } else {
             out.printLn("empty tracker");
