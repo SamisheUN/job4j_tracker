@@ -1,4 +1,4 @@
-/*package ru.job4j.tracker;
+package ru.job4j.tracker;
 
 import org.junit.Test;
 import static org.hamcrest.Matchers.is;
@@ -8,47 +8,116 @@ import static org.junit.Assert.assertThat;
 public class StartUITest {
 
     @Test
-    public void whenCreateItem() {
-        Input in = new StubInput(
-                new String[] {"0", "Item name", "1"}
-        );
+    public void FindAllAction() {
+    Output out = new StubOutput();
+    Input in = new StubInput(
+            new String[] {"0", "1"}
+    );
+    Tracker tracker = new Tracker();
+    UserAction[] actions = {
+            new ShowAllAction(out),
+            new ExitAction()
+    };
+    new StartUI(out).init(in, tracker, actions);
+    assertThat(out.toString(), is(
+            "Menu." + System.lineSeparator() +
+                    "0. === Show all items ===" + System.lineSeparator() +
+                    "1. Exit" + System.lineSeparator() +
+                    "empty tracker" + System.lineSeparator() +
+                    "Menu." + System.lineSeparator() +
+                    "0. === Show all items ===" + System.lineSeparator() +
+                    "1. Exit" + System.lineSeparator()
+    ));
+    }
+
+    /* Непонятно как запросить частичное совпадение в assert, т.к. дата каждый раз новая.
+
+    @Test
+    public void FindByNameAction() {
         Tracker tracker = new Tracker();
+        Item item =  new Item();
+        item.setName("itemName");
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"0", "itemName", "1"}
+        );
+
+        tracker.add(item);
         UserAction[] actions = {
-                new CreateAction(out),
+                new FindByNameAction(out),
                 new ExitAction()
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findAll()[0].getName(), is("Item name"));
+        assertThat(out.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. === Find item by name ====" + System.lineSeparator() +
+                        "1. Exit" + System.lineSeparator() +
+                        "Menu." + System.lineSeparator() +
+                        "0. === Find item by name ====" + System.lineSeparator() +
+                        "1. Exit" + System.lineSeparator()
+        ));
+    }*/
+
+    @Test
+    public void FindMissingNameAction() {
+        Tracker tracker = new Tracker();
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"0", "itemName", "1"}
+        );
+        UserAction[] actions = {
+                new FindByNameAction(out),
+                new ExitAction()
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. === Find item by name ====" + System.lineSeparator() +
+                        "1. Exit" + System.lineSeparator() +
+                        "Заявки с таким именем не найдены" + System.lineSeparator() +
+                        "Menu." + System.lineSeparator() +
+                        "0. === Find item by name ====" + System.lineSeparator() +
+                        "1. Exit" + System.lineSeparator()
+        ));
     }
 
     @Test
-    public void whenReplaceItem() {
+    public void FindByIdAction() {
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("Original item name"));
-        String replacedName = "New item name";
+        Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0" , String.valueOf(item.getId()), replacedName, "1"}
+                new String[] {"0", "1", "1"}
         );
         UserAction[] actions = {
-                new EditItemAction(),
+                new FindByIdAction(out),
                 new ExitAction()
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()).getName(), is(replacedName));
+        assertThat(out.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. === Find item by id ====" + System.lineSeparator() +
+                        "1. Exit" + System.lineSeparator() +
+                        "=== Impossible to find ====" + System.lineSeparator() +
+                        "Menu." + System.lineSeparator() +
+                        "0. === Find item by id ====" + System.lineSeparator() +
+                        "1. Exit" + System.lineSeparator()
+        ));
     }
 
     @Test
-    public void whenDeleteItem() {
-        Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("Deleted item"));
+    public void whenExit() {
+        Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0", String.valueOf(item.getId()), "1"}
+                new String[] {"0"}
         );
+        Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new DeleteItemAction(),
                 new ExitAction()
         };
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()), is(nullValue()));
+        assertThat(out.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. Exit" + System.lineSeparator()
+        ));
     }
-}*/
+}
