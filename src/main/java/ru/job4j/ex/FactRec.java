@@ -4,15 +4,17 @@ public class FactRec {
     public static int calc(int n) {
         int rsl;
         if (n == 0 || n == 1) {
-            rsl = 1;
-        } else {
-            rsl = calc(n - 1) * n;
+            return 1;
         }
-        return rsl;
+        return calc(n - 1) * n;
     }
 
     public static void main(String[] args) {
-        int rsl = calc(3);
-        System.out.println(rsl);
+        for (int i = 0; i <= 10; i++) {
+            System.out.println("i=" + i);
+            int rsl = calc(i);
+            System.out.println(rsl);
+        }
+
     }
 }
