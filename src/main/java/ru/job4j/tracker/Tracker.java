@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Tracker {
     //private final Item[] items = new Item[100];
-    List<Item> items = new ArrayList<>();
+    private final List<Item> items = new ArrayList<>();
     private int ids = 1;
     //private int size = 0;
 
@@ -33,10 +33,10 @@ public class Tracker {
     }
 
     public List<Item> findAll() {
-        return items;
+        return List.copyOf(items);
     }
 
-    public ArrayList<Item> findByName(String key) {
+    public List<Item> findByName(String key) {
         ArrayList <Item> namesFinded = new ArrayList<>();
         for (int index = 0; index < items.size(); index++) {
             Item item = items.get(index);

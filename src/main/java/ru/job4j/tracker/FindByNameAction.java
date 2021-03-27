@@ -19,7 +19,7 @@ public class FindByNameAction implements UserAction{
     @Override
     public boolean execute(Input input, Tracker tracker) {
         String wantedName = input.askStr("Enter an existing name to search: ");
-        ArrayList<Item> searchingResult = tracker.findByName(wantedName);
+        List<Item> searchingResult = tracker.findByName(wantedName);
         if (searchingResult.size() > 0) {
             for (int index = 0; index < searchingResult.size(); index++) {
                 out.printLn(searchingResult.get(index).toString());
