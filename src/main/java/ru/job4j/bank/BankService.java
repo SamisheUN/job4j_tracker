@@ -10,15 +10,13 @@ public class BankService {
 
     public void addUser(User user) {
         List <Account> accounts = new ArrayList<Account>();
-        /*if (!users.containsKey(user.getPassport())) {
+        if (!users.containsKey(user.getPassport())) {
             users.put(user, accounts);
-        }*/
-        users.putIfAbsent(user, accounts); //putIfAbsent применен по требованию
+        }
     }
 
     public void addAccount(String passport, Account account) {
-        List <Account> userAccs = users.get(findByPassport(passport));
-        if (!userAccs.contains(account)) {
+        if (findByPassport(passport) != null && !users.get(findByPassport(passport)).contains(account)) {
             users.get(findByPassport(passport)).add(account);
         }
     }
@@ -28,6 +26,7 @@ public class BankService {
         for (User key : users.keySet()) {
             if (key.getPassport().equals(passport)){
                 rsl = key;
+                break;
             }
         }
         return rsl;
@@ -36,8 +35,8 @@ public class BankService {
     public Account findByRequisite(String passport, String requisite) {
         Account rsl = null;
         User user = findByPassport(passport);
-        List <Account> userAccs = users.get(user);
-        if (!(user == null)) {
+        if (user != null) {
+            List <Account> userAccs = users.get(user);
             for (Account acc : userAccs) {
                 /*if (acc.getRequisite().equals(requisite)) {
                 rsl = acc;
@@ -54,7 +53,9 @@ public class BankService {
         boolean rsl = false;
         Account sourceAcc = findByRequisite(srcPassport, srcRequisite);
         Account destinationAcc = findByRequisite(destPassport, destRequisite);
-        if (sourceAcc.getBalance() < amount || destinationAcc.equals(null)) return false;
+        if (sourceAcc.getBalance() < amount || sourceAcc == null || destinationAcc == null) {
+            return false;
+        }
         sourceAcc.setBalance(sourceAcc.getBalance() - amount);
         destinationAcc.setBalance((destinationAcc.getBalance() + amount));
         rsl = true;
