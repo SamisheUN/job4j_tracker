@@ -10,14 +10,16 @@ public class BankService {
 
     public void addUser(User user) {
         List <Account> accounts = new ArrayList<Account>();
-        if (!users.containsKey(user.getPassport())) {
+        /*if (!users.containsKey(user.getPassport())) {
             users.put(user, accounts);
-        }
+        }*/
+        users.putIfAbsent(user, accounts);
     }
 
     public void addAccount(String passport, Account account) {
-        if (findByPassport(passport) != null && !users.get(findByPassport(passport)).contains(account)) {
-            users.get(findByPassport(passport)).add(account);
+        User user = findByPassport(passport);
+        if (user != null && !users.get(user).contains(account)) {
+            users.get(user).add(account);
         }
     }
 
@@ -36,13 +38,14 @@ public class BankService {
         Account rsl = null;
         User user = findByPassport(passport);
         if (user != null) {
-            List <Account> userAccs = users.get(user);
+            List<Account> userAccs = users.get(user);
             for (Account acc : userAccs) {
-                /*if (acc.getRequisite().equals(requisite)) {
-                rsl = acc;
-                }*/
-                int index = userAccs.indexOf(new Account(requisite, -1));
-                rsl = userAccs.get(index);
+                if (acc.getRequisite().equals(requisite)) {
+                    rsl = acc;
+                    //int index = userAccs.indexOf(new Account(requisite, -1));
+                    //rsl = userAccs.get(index);
+                    break;
+                }
             }
         }
         return rsl;
