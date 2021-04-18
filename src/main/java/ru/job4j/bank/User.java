@@ -5,7 +5,7 @@ import ru.job4j.tracker.Item;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class User implements Comparable<User>, Comparator<User> {
+public class User implements Comparable<User> {
     private String passport;
     private String username;
     private int age;
@@ -74,15 +74,10 @@ public class User implements Comparable<User>, Comparator<User> {
 
     @Override
     public int compareTo(User another) {
-        int rsl = CharSequence.compare(username, another.getUsername());
+        int rsl = username.compareTo(another.getUsername());
         if (rsl == 0) {
             rsl = Integer.compare(age, another.getAge());
         }
         return rsl;
-    }
-
-    @Override
-    public int compare(User o1, User o2) {
-        return o1.compareTo(o2);
     }
 }

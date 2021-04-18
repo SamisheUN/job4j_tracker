@@ -2,6 +2,7 @@ package ru.job4j.collection;
 
 import org.junit.Test;
 import ru.job4j.bank.User;
+import ru.job4j.bank.UserNameAgeComparator;
 import ru.job4j.tracker.Item;
 import ru.job4j.tracker.SortItemIncrOrder;
 
@@ -51,5 +52,23 @@ public class UserTest {
                         new User("A", 1)
                 );
         assertThat(rsl, is(0));
+    }
+
+    @Test
+    public void whenNormalOrderComparatorTest() {
+        List<User> users = Arrays.asList(
+                new User("b", 1),
+                new User("a", 1),
+                new User("z", 1),
+                new User("z", 12)
+        );
+        Collections.sort(users, new UserNameAgeComparator());
+        assertEquals(users, Arrays.asList(
+                new User("a", 1),
+                new User("b", 1),
+                new User("z", 1),
+                new User("z", 12)
+                )
+        );
     }
 }
