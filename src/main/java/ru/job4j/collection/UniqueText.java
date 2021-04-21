@@ -3,6 +3,7 @@ package ru.job4j.collection;
 import java.util.HashSet;
 
 public class UniqueText {
+    @SuppressWarnings("checkstyle:SimplifyBooleanExpression")
     public static boolean isEquals(String originText, String duplicateText) {
         boolean rsl = true;
         String[] origin = originText.split(" ");
@@ -14,10 +15,10 @@ public class UniqueText {
         }
         /* for-each text -> hashSet.contains */
         for (String word : text) {
-            if (check.contains(word) == false) {
+            if (!check.contains(word)) {
                 rsl = false;
                 break;
-            };
+            }
         }
         return rsl;
     }

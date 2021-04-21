@@ -31,7 +31,10 @@ public class Triangle {
         double p = period(ab, ac, bc);
         if (this.exist(ab, ac, bc)) {
             /* написать формулу для расчета площади треугольника. */
-            rsl = Math.sqrt((period(ab, ac, bc)) * (period(ab, ac, bc) - ab) * (period(ab, ac, bc) - ac) * (period(ab, ac, bc) - bc));
+            rsl = Math.sqrt((period(ab, ac, bc))
+                    * (period(ab, ac, bc) - ab)
+                    * (period(ab, ac, bc) - ac)
+                    * (period(ab, ac, bc) - bc));
         }
         return rsl;
     }

@@ -11,6 +11,7 @@ public class PhoneDictionary {
 
     /**
      * Вернуть список всех пользователей, который содержат key в любых полях.
+     *
      * @param key Ключ поиска.
      * @return Список подошедщих пользователей.
      */
@@ -18,12 +19,13 @@ public class PhoneDictionary {
         ArrayList<Person> result = new ArrayList<>();
         for (Person index : persons) {
             if (
-                    index.getName().contains(key) ||
-                    index.getSurname().contains(key) ||
-                    index.getPhone().contains(key) ||
-                    index.getAddress().contains(key)
-            )
+                    index.getName().contains(key)
+                            || index.getSurname().contains(key)
+                            || index.getPhone().contains(key)
+                            || index.getAddress().contains(key)
+            ) {
                 result.add(index);
+            }
         }
         return result;
     }

@@ -8,7 +8,7 @@ public class College {
         student.setFullname("Andrey Samoylychev");
         student.setGroup("trainee");
 
-        System.out.println(student.getFullname() + " " +
-                student.getGroup() + " since " + student.getDate());
+        System.out.println(student.getFullname() + " "
+                + student.getGroup() + " since " + student.getDate());
     }
 }

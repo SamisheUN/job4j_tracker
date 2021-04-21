@@ -1,11 +1,11 @@
 package ru.job4j.tracker;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SingleTracker {
-    private Tracker tracker = new Tracker();
     private static SingleTracker instance;
+    private Tracker tracker = new Tracker();
+
     private SingleTracker() {
     }
 
@@ -13,7 +13,7 @@ public class SingleTracker {
         if (instance == null) {
             instance = new SingleTracker();
         }
-        return  instance;
+        return instance;
     }
 
     public Item add(Item item) {

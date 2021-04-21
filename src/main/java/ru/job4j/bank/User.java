@@ -45,7 +45,6 @@ public class User implements Comparable<User> {
     }
 
 
-
     /* @Override //старый по паспорту
         public boolean equals(Object o) {
             if (this == o) return true;
@@ -60,10 +59,15 @@ public class User implements Comparable<User> {
         }*/
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         User user = (User) o;
-        return age == user.age &&
+        return age == user.age
+                &&
                 Objects.equals(username, user.username);
     }
 

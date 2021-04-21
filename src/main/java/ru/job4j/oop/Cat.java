@@ -4,19 +4,6 @@ public class Cat {
     private String food;
     private String name;
 
-    public void show() { //метод вывода еды
-        System.out.println(this.name);
-        System.out.println(this.food);
-    }
-
-    public void giveNick (String nick) {
-        this.name = nick;
-    }
-
-    public void eat (String meat) {
-        this.food = meat;
-    }
-
     public static void main(String[] args) {
         System.out.println("There are gav's name an food.");
         Cat gav = new Cat();
@@ -28,5 +15,18 @@ public class Cat {
         black.eat("fish");
         black.giveNick("Black");
         black.show();
+    }
+
+    public void show() { //метод вывода еды
+        System.out.println(this.name);
+        System.out.println(this.food);
+    }
+
+    public void giveNick(String nick) {
+        this.name = nick;
+    }
+
+    public void eat(String meat) {
+        this.food = meat;
     }
 }

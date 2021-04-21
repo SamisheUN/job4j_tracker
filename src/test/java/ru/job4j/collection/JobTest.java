@@ -1,17 +1,13 @@
 package ru.job4j.collection;
 
 import org.junit.Test;
-import ru.job4j.bank.User;
-import ru.job4j.bank.UserNameAgeComparator;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.lessThan;
-import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
@@ -90,7 +86,8 @@ public class JobTest {
 
     @Test
     public void whenCompByDescNameAndDescPriority() {
-        Comparator<Job> cmpNamePriority = new JobDescByName().thenComparing(new JobDescByPriority());
+        Comparator<Job> cmpNamePriority = new JobDescByName()
+                .thenComparing(new JobDescByPriority());
         int rsl = cmpNamePriority.compare(
                 new Job("Impl task", 0),
                 new Job("Fix bug", 1)
@@ -100,7 +97,8 @@ public class JobTest {
 
     @Test
     public void whenCompatorByDescNameAndAscPriority() {
-        Comparator<Job> cmpNamePriority = new JobDescByName().thenComparing(new JobAscByPriority());
+        Comparator<Job> cmpNamePriority = new JobDescByName()
+                .thenComparing(new JobAscByPriority());
         int rsl = cmpNamePriority.compare(
                 new Job("a", 0),
                 new Job("a", 1)

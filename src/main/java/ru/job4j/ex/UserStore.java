@@ -3,17 +3,17 @@ package ru.job4j.ex;
 public class UserStore {
 
     public static User findUser(User[] users, String login) throws UserNotFoundException {
-            User userFinded = null;
-            for (int index = 0; index < users.length; index++) {
-                if (users[index].getUsername().equals(login)) {
-                    userFinded = users[index];
-                    break;
-                }
+        User userFinded = null;
+        for (int index = 0; index < users.length; index++) {
+            if (users[index].getUsername().equals(login)) {
+                userFinded = users[index];
+                break;
             }
-            if (userFinded == null) {
-                throw new UserNotFoundException("В массиве нет искомого элемента.");
-            }
-            return userFinded;
+        }
+        if (userFinded == null) {
+            throw new UserNotFoundException("В массиве нет искомого элемента.");
+        }
+        return userFinded;
     }
 
     public static boolean validate(User user) throws UserInvalidException {
@@ -50,7 +50,5 @@ public class UserStore {
         } catch (UserInvalidException e) {
             System.out.println("Пользователь не валидный");
         }
-
-
     }
 }

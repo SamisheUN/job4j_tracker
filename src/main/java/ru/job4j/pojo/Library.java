@@ -12,7 +12,7 @@ public class Library {
         books[2] = third;
         books[3] = fourth;
         System.out.println("Печать полного массива: ");
-        for (int i = 0; i<books.length; i++) {
+        for (int i = 0; i < books.length; i++) {
             Book book = books[i];
             System.out.println(book.getName());
         }
@@ -25,7 +25,7 @@ public class Library {
             System.out.println(book.getName());
         }
         System.out.println("Печать фильтрованного массива: ");
-        for (int i = 0; i<books.length; i++) {
+        for (int i = 0; i < books.length; i++) {
             Book book = books[i];
             if (book.getName().equals("Clean code")) {
                 System.out.println(book.getName());

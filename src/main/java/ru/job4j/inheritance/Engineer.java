@@ -7,7 +7,7 @@ public class Engineer {
         return null;
     }
 
-    public int getTeammates(){
-     return 0;
+    public int getTeammates() {
+        return 0;
     }
 }
