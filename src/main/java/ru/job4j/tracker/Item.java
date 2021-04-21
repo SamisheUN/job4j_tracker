@@ -56,7 +56,7 @@ public class Item implements Comparable<Item> {
         return CharSequence.compare(name, another.getName());
     }
 
-    /*@Override
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -67,5 +67,10 @@ public class Item implements Comparable<Item> {
         Item item = (Item) o;
         return Objects.equals(id, item.id)
                 && Objects.equals(name, item.name);
-    }*/
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }
