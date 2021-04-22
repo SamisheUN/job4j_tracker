@@ -21,7 +21,7 @@ public class BankService {
     /**
      * Метод предназначен для добавления в БД нового пользователя.
      * В случае если идентичный не внесён ранее, добавляет требуемого с пустым списком аккаунтов.
-     * @param user принимает объект User
+     * @param user объект User
      */
     public void addUser(User user) {
         List<Account> accounts = new ArrayList<Account>();

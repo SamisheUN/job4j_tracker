@@ -35,7 +35,7 @@ public class User implements Comparable<User> {
 
     /**
      * Конструктор объекта, предназначен для одного из сторонних заданий,
-     * переопределен, т.к. замена влекла ошибки.
+     * перегружен, т.к. замена/удаление влекли ошибки.
      *
      * @param username имя
      * @param age      возраст
@@ -45,26 +45,50 @@ public class User implements Comparable<User> {
         this.username = username;
     }
 
+    /**
+     * геттер для passport
+     * @return паспорт объекта
+     */
     public String getPassport() {
         return passport;
     }
 
+    /**
+     * сеттер для passport, присваивает паспорт клиенту
+     * @param passport паспорт
+     */
     public void setPassport(String passport) {
         this.passport = passport;
     }
 
+    /**
+     * геттер для username
+     * @return возвращает имя клиента
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * сеттер для username, для именования клиента
+     * @param username имя
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     * геттер для age клиента,
+     * @return возвращает возраст
+     */
     public int getAge() {
         return age;
     }
 
+    /**
+     * сеттер для возраста клиента
+     * @param age возраст
+     */
     public void setAge(int age) {
         this.age = age;
     }
@@ -86,8 +110,7 @@ public class User implements Comparable<User> {
     /**
      * Метод, сравнивающий объекты User.
      * При сравнении учитываются age и username.
-     *
-     * @param o Принимает объект типа User.
+     * @param o объект типа User.
      * @return Возвращает true, учитывая при сравнении age и username.
      */
     @Override
@@ -116,13 +139,12 @@ public class User implements Comparable<User> {
 
     /**
      * Метод нахождения порядка следования объектов, учитывая в первую очередь username, затем age.
-     *
      * @param another принимает объект типа User.
-     * @return возвращает 0 в случае идентичных username и age,
-     * возвращает отрицательное целое число,
+     * @return возвращает 0 в случае идентичных username и age.
+     * Возвращает отрицательное целое число,
      * в случае когда username объекта лексикографически предшествует username аргумента,
      * либо, в случае когда, при равных username, age объекта меньше age аргумента.
-     * возвращает положительное целое число,
+     * Возвращает положительное целое число,
      * в случае когда username аргумента лексикографически предшествует username объекта,
      * либо, в случае когда, при равных username, age аргумента меньше age объекта.
      */
