@@ -16,7 +16,7 @@ notifications:
   email:
     recipients:
       - SerSam-2007@yandex.ru
-    on_success: never # default: change
+    on_success: never # default: changes
     on_failure: always # default: always
 
     env:
