@@ -1,13 +1,18 @@
 package ru.job4j.inheritance;
 
-public class Engineer {
-    private int teammates;
+public class Engineer extends Profession {
+    private String grade;
 
-    public Project work(Project project) {
-        return null;
+    public Engineer(String name,
+                    String surname,
+                    String education,
+                    String birthday,
+                    String grade) {
+        super(name, surname, education, birthday);
+        this.grade = grade;
     }
 
-    public int getTeammates() {
-        return 0;
+    public String getGrade() {
+        return grade;
     }
 }
